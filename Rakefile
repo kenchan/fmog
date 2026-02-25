@@ -7,4 +7,12 @@ Rake::TestTask.new(:test) do |t|
   t.test_files = FileList["test/test_*.rb"]
 end
 
-task default: :test
+desc "Run steep type check"
+task :steep do
+  sh "bundle exec steep check"
+end
+
+desc "Run tests and type check"
+task ci: [:test, :steep]
+
+task default: :ci
