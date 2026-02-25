@@ -3,6 +3,29 @@
 require_relative "test_helper"
 require "json"
 
+SAMPLE_RSS = <<~XML unless defined?(SAMPLE_RSS)
+  <?xml version="1.0" encoding="UTF-8"?>
+  <rss version="2.0">
+    <channel>
+      <title>Test Feed</title>
+      <link>https://example.com</link>
+      <item>
+        <title>Article 1</title>
+        <link>https://example.com/1</link>
+        <guid>guid-1</guid>
+        <description>Body of article 1</description>
+        <pubDate>Mon, 01 Jan 2024 00:00:00 GMT</pubDate>
+      </item>
+      <item>
+        <title>Article 2</title>
+        <link>https://example.com/2</link>
+        <guid>guid-2</guid>
+        <description>Body of article 2</description>
+      </item>
+    </channel>
+  </rss>
+XML
+
 class TestFeedCLI < FmogTestCase
   def test_add_outputs_json
     out, = run_cli(Fmog::FeedCLI, "add", "https://example.com/feed.xml")
@@ -50,6 +73,23 @@ class TestFeedCLI < FmogTestCase
       result = JSON.parse(out.strip)
       assert_equal id, result["id"]
       assert_equal 2, result["count"]
+    end
+  end
+
+  def test_fetch_all_with_stub
+    id1 = Fmog::Feed.add("https://example.com/feed1.xml")
+    id2 = Fmog::Feed.add("https://example.com/feed2.xml")
+    URI.stub(:open, ->(*_) { StringIO.new(SAMPLE_RSS) }) do
+      out, = run_cli(Fmog::FeedCLI, "fetch")
+      lines = out.strip.split("\n")
+      assert_equal 2, lines.length
+
+      results = lines.map { |l| JSON.parse(l) }
+      results.each do |r|
+        assert_includes [id1, id2], r["id"]
+        assert_includes ["https://example.com/feed1.xml", "https://example.com/feed2.xml"], r["url"]
+        assert_equal 2, r["count"]
+      end
     end
   end
 end
