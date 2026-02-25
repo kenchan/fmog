@@ -2,7 +2,7 @@
 
 require_relative "test_helper"
 
-SAMPLE_RSS = <<~XML
+SAMPLE_RSS = <<~XML unless defined?(SAMPLE_RSS)
   <?xml version="1.0" encoding="UTF-8"?>
   <rss version="2.0">
     <channel>
@@ -25,7 +25,7 @@ SAMPLE_RSS = <<~XML
   </rss>
 XML
 
-SAMPLE_ATOM = <<~XML
+SAMPLE_ATOM = <<~XML unless defined?(SAMPLE_ATOM)
   <?xml version="1.0" encoding="UTF-8"?>
   <feed xmlns="http://www.w3.org/2005/Atom">
     <title>Atom Test Feed</title>
