@@ -5,7 +5,23 @@ require "json"
 require "terminal-table"
 
 module Fmog
-  class FeedCLI < Thor
+  class BaseCLI < Thor
+    private
+
+    def tty?
+      $stdout.tty?
+    end
+
+    def output_single(hash, message)
+      if tty?
+        puts message
+      else
+        puts JSON.generate(hash)
+      end
+    end
+  end
+
+  class FeedCLI < BaseCLI
     namespace "feed"
 
     desc "add URL", "Add a feed"
@@ -64,22 +80,9 @@ module Fmog
       exit 1
     end
 
-    private
-
-    def tty?
-      $stdout.tty?
-    end
-
-    def output_single(hash, message)
-      if tty?
-        puts message
-      else
-        puts JSON.generate(hash)
-      end
-    end
   end
 
-  class ItemCLI < Thor
+  class ItemCLI < BaseCLI
     namespace "item"
 
     desc "list", "List items"
@@ -151,19 +154,6 @@ module Fmog
       end
     end
 
-    private
-
-    def tty?
-      $stdout.tty?
-    end
-
-    def output_single(hash, message)
-      if tty?
-        puts message
-      else
-        puts JSON.generate(hash)
-      end
-    end
   end
 
   class CLI < Thor
