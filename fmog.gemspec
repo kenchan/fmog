@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
   spec.authors = ["kenchan"]
   spec.summary = "Feed MogMog - CLI feed aggregator"
 
-  spec.required_ruby_version = ">= 3.0"
+  spec.required_ruby_version = ">= 4.0"
 
   spec.files = Dir["lib/**/*.rb", "exe/*"]
   spec.bindir = "exe"
