@@ -1,0 +1,5 @@
+module RSS
+  class Parser
+    def self.parse: (String content, bool do_validate) -> untyped
+  end
+end

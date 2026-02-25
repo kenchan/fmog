@@ -1,0 +1,28 @@
+module Fmog
+  class FeedCLI < Thor
+    def add: (String url) -> void
+    def list: () -> void
+    def remove: (String id) -> void
+    def fetch: (?String? id) -> void
+
+    private
+
+    def tty?: () -> bool
+    def output_single: (Hash[Symbol, untyped] hash, String message) -> void
+  end
+
+  class ItemCLI < Thor
+    def list: () -> void
+    def show: (String id) -> void
+    def read: (String id) -> void
+    def unread: (String id) -> void
+
+    private
+
+    def tty?: () -> bool
+    def output_single: (Hash[Symbol, untyped] hash, String message) -> void
+  end
+
+  class CLI < Thor
+  end
+end

@@ -1,0 +1,10 @@
+module Fmog
+  module Feed
+    def self.add: (String url) -> Integer
+    def self.list: () -> Array[Hash[String, untyped]]
+    def self.find: (Integer id) -> Hash[String, untyped]?
+    def self.remove: (Integer id) -> Integer
+    def self.update_title: (Integer id, String title) -> void
+    def self.touch_fetched: (Integer id) -> void
+  end
+end

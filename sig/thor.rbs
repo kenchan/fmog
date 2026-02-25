@@ -1,0 +1,9 @@
+class Thor
+  def self.desc: (String usage, String description) -> void
+  def self.option: (Symbol name, **untyped opts) -> void
+  def self.namespace: (String name) -> void
+  def self.subcommand: (String name, Class command_class) -> void
+  def self.start: (Array[String] args) -> void
+
+  def options: () -> Hash[String | Symbol, untyped]
+end

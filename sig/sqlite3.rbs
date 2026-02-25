@@ -1,0 +1,13 @@
+module SQLite3
+  class Database
+    attr_accessor results_as_hash: bool
+
+    def initialize: (String filename) -> void
+    def execute: (String sql, ?Array[untyped] bind_vars) -> Array[Hash[String, untyped]]
+    def last_insert_row_id: () -> Integer
+    def changes: () -> Integer
+  end
+
+  class ConstraintException < Exception
+  end
+end

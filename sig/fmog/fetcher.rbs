@@ -1,0 +1,14 @@
+module Fmog
+  module Fetcher
+    def self.fetch: (Integer feed_id) -> Integer
+    def self.fetch_all: () -> Array[{ id: Integer, url: String, count: Integer }]
+
+    private
+
+    def self.extract_guid: (untyped entry) -> String?
+    def self.extract_title: (untyped entry) -> String
+    def self.extract_url: (untyped entry) -> String?
+    def self.extract_body: (untyped entry) -> String?
+    def self.extract_date: (untyped entry) -> Time?
+  end
+end

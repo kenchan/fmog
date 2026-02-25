@@ -1,0 +1,12 @@
+module Fmog
+  module DB
+    DB_DIR: String
+    DB_PATH: String
+
+    @connection: SQLite3::Database?
+
+    def self.connection: () -> SQLite3::Database
+    def self.migrate: (SQLite3::Database db) -> void
+    def self.reset!: () -> void
+  end
+end

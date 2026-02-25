@@ -1,0 +1,11 @@
+module Fmog
+  module Item
+    COLUMNS: String
+
+    def self.upsert: (feed_id: Integer, guid: String, title: String?, url: String?, body: String?, published_at: String?) -> void
+    def self.list: (?feed_id: Integer?, ?unread: bool, ?limit: Integer) -> Array[Hash[String, untyped]]
+    def self.find: (Integer id) -> Hash[String, untyped]?
+    def self.mark_read: (Integer id) -> Integer
+    def self.mark_unread: (Integer id) -> Integer
+  end
+end

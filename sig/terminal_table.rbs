@@ -1,0 +1,6 @@
+module Terminal
+  class Table
+    def initialize: (**untyped opts) -> void
+    def to_s: () -> String
+  end
+end
