@@ -18,7 +18,6 @@ module Fmog
 
     def self.remove(id)
       db = DB.connection
-      db.execute("DELETE FROM items WHERE feed_id = ?", [id])
       db.execute("DELETE FROM feeds WHERE id = ?", [id])
       db.changes
     end
