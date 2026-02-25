@@ -1,69 +1,82 @@
 # fmog (Feed MogMog)
 
-Ruby製のCLIフィードアグリゲーター。RSS/Atomフィードを購読・閲覧できます。
+A CLI feed aggregator written in Ruby. Subscribe to and read RSS/Atom feeds from your terminal.
 
-## インストール
+## Installation
 
 ```bash
 bundle install
 ```
 
-## 使い方
+## Usage
 
-### フィード管理
+### Feed Management
 
 ```bash
-# フィードを追加
+# Add a feed
 bundle exec fmog feed add https://example.com/feed.xml
 
-# フィード一覧を表示
+# List all feeds
 bundle exec fmog feed list
 
-# フィードを取得（全フィード）
+# Fetch all feeds
 bundle exec fmog feed fetch
 
-# 特定のフィードだけ取得
+# Fetch a specific feed
 bundle exec fmog feed fetch 1
 
-# フィードを削除
+# Remove a feed
 bundle exec fmog feed remove 1
 ```
 
-### アイテム（記事）管理
+### Item (Article) Management
 
 ```bash
-# アイテム一覧を表示
+# List items
 bundle exec fmog item list
 
-# 未読のみ表示
+# Show only unread items
 bundle exec fmog item list --unread
 
-# 特定フィードのアイテムのみ表示
+# Filter items by feed
 bundle exec fmog item list --feed 1
 
-# 表示件数を指定
+# Limit the number of items
 bundle exec fmog item list --limit 10
 
-# アイテム詳細を表示
+# Show item details
 bundle exec fmog item show 1
 
-# 既読にする
+# Mark as read
 bundle exec fmog item read 1
 
-# 未読に戻す
+# Mark as unread
 bundle exec fmog item unread 1
 ```
 
-## 出力フォーマット
+## Output Format
 
-- **ターミナル（TTY）**: テーブル形式で見やすく表示
-- **パイプ/リダイレクト**: JSON Lines形式（1行1オブジェクト）
+- **Terminal (TTY)**: Human-readable table format
+- **Pipe/Redirect**: JSON Lines (one JSON object per line)
 
 ```bash
-# JSON Linesとして他のコマンドに渡す
+# Pipe JSON Lines to other commands
 bundle exec fmog item list --unread | jq '.title'
 ```
 
-## データ保存先
+## Data Storage
 
-`~/.local/share/fmog/fmog.db`（SQLite）
+`~/.local/share/fmog/fmog.db` (SQLite)
+
+## Development
+
+```bash
+# Run tests
+bundle exec rake test
+
+# Run type check
+bundle exec rake steep
+
+# Run full CI (tests + type check)
+bundle exec rake ci
+```
