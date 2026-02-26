@@ -1,14 +1,26 @@
 # frozen_string_literal: true
 
+require_relative "lib/fmog/version"
+
 Gem::Specification.new do |spec|
   spec.name = "fmog"
-  spec.version = "0.1.0"
-  spec.authors = ["kenchan"]
+  spec.version = Fmog::VERSION
+  spec.authors = ["Kenichi Takahashi"]
+  spec.email = ["kenichi.taka@gmail.com"]
   spec.summary = "Feed MogMog - CLI feed aggregator"
+  spec.description = "fmog (Feed MogMog) is a command-line RSS/Atom feed aggregator. Subscribe to feeds, fetch updates, and read items — all from your terminal, with JSON output for piping."
+  spec.homepage = "https://github.com/kenchan/fmog"
+  spec.license = "MIT"
 
   spec.required_ruby_version = ">= 4.0"
 
-  spec.files = Dir["lib/**/*.rb", "exe/*"]
+  spec.metadata = {
+    "source_code_uri" => "https://github.com/kenchan/fmog",
+    "changelog_uri" => "https://github.com/kenchan/fmog/blob/main/CHANGELOG.md",
+    "rubygems_mfa_required" => "true"
+  }
+
+  spec.files = Dir["lib/**/*.rb", "sig/**/*.rbs", "exe/*"]
   spec.bindir = "exe"
   spec.executables = ["fmog"]
 
