@@ -54,6 +54,13 @@ class TestFeedCLI < FmogTestCase
     assert_empty out.strip
   end
 
+  def test_list_tty_renders_table
+    Fmog::Feed.add("https://example.com/feed.xml")
+    out = run_tty_cli(Fmog::FeedCLI, "list")
+    assert_match(/ID/, out)
+    assert_match(/URL/, out)
+  end
+
   def test_remove_outputs_json
     id = Fmog::Feed.add("https://example.com/feed.xml")
     out, = run_cli(Fmog::FeedCLI, "remove", id.to_s)
@@ -111,6 +118,12 @@ class TestItemCLI < FmogTestCase
     assert_equal 1, lines.length
     result = JSON.parse(lines[0])
     assert_equal "Test Item", result["title"]
+  end
+
+  def test_list_tty_renders_table
+    out = run_tty_cli(Fmog::ItemCLI, "list")
+    assert_match(/ID/, out)
+    assert_match(/Title/, out)
   end
 
   def test_show_outputs_json

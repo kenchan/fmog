@@ -28,4 +28,20 @@ class FmogTestCase < Minitest::Test
       # swallow exit calls from error handlers
     end
   end
+
+  # Run a Thor CLI command with a fake TTY stdout (exercises the table-rendering path)
+  def run_tty_cli(klass, *args)
+    tty_out = StringIO.new
+    def tty_out.tty? = true
+    orig = $stdout
+    $stdout = tty_out
+    begin
+      klass.start(args.map(&:to_s))
+    rescue SystemExit
+      # swallow exit calls from error handlers
+    ensure
+      $stdout = orig
+    end
+    tty_out.string
+  end
 end
