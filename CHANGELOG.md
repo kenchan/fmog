@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v0.1.0](https://github.com/kenchan/fmog/commits/v0.1.0) - 2026-02-26
+- fix: remove redundant item deletion in Feed#remove by @kenchan in https://github.com/kenchan/fmog/pull/2
+- refactor: redesign Fetcher as a class with private instance methods by @kenchan in https://github.com/kenchan/fmog/pull/3
+- refactor: extract BaseCLI to remove duplicated tty?/output_single by @kenchan in https://github.com/kenchan/fmog/pull/4
+- feat: use xdg gem for XDG-compliant DB path by @kenchan in https://github.com/kenchan/fmog/pull/5
+- docs: fix Fetcher architecture note, update DB path description, add contributing guidelines by @kenchan in https://github.com/kenchan/fmog/pull/6
+- chore: prepare gemspec and repo for RubyGems.org release (closes #1) by @kenchan in https://github.com/kenchan/fmog/pull/7
+- ci: add tagpr and RubyGems Trusted Publishing workflow by @kenchan in https://github.com/kenchan/fmog/pull/8
+- fix: use GH_PAT for tagpr and remove duplicate tagPrefix by @kenchan in https://github.com/kenchan/fmog/pull/10
+
 ## [v0.1.0](https://github.com/kenchan/fmog/commits/v/v0.1.0) - 2026-02-26
 - fix: remove redundant item deletion in Feed#remove by @kenchan in https://github.com/kenchan/fmog/pull/2
 - refactor: redesign Fetcher as a class with private instance methods by @kenchan in https://github.com/kenchan/fmog/pull/3
