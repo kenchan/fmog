@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v0.1.1](https://github.com/kenchan/fmog/compare/v0.1.0...v0.1.1) - 2026-02-26
+- fix: add bundler/gem_tasks to enable rake release task by @kenchan in https://github.com/kenchan/fmog/pull/12
+
 ## [v0.1.0](https://github.com/kenchan/fmog/commits/v0.1.0) - 2026-02-26
 - fix: remove redundant item deletion in Feed#remove by @kenchan in https://github.com/kenchan/fmog/pull/2
 - refactor: redesign Fetcher as a class with private instance methods by @kenchan in https://github.com/kenchan/fmog/pull/3
