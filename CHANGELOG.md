@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v0.1.1](https://github.com/kenchan/fmog/compare/v0.1.0...v0.1.1) - 2026-02-26
+- fix: replace bundle exec fmog with fmog in README usage examples by @kenchan in https://github.com/kenchan/fmog/pull/14
+- fix: use fully qualified ::Terminal::Table to avoid Thor namespace conflict by @kenchan in https://github.com/kenchan/fmog/pull/15
+
 ## [v0.1.0](https://github.com/kenchan/fmog/commits/v0.1.0) - 2026-02-26
 - fix: remove redundant item deletion in Feed#remove by @kenchan in https://github.com/kenchan/fmog/pull/2
 - refactor: redesign Fetcher as a class with private instance methods by @kenchan in https://github.com/kenchan/fmog/pull/3
