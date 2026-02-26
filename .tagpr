@@ -2,3 +2,4 @@
 versionFile = lib/fmog/version.rb
 command = bundle exec rake ci
 releaseBranch = main
+	vPrefix = true
