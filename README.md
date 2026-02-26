@@ -14,44 +14,44 @@ bundle install
 
 ```bash
 # Add a feed
-bundle exec fmog feed add https://example.com/feed.xml
+fmog feed add https://example.com/feed.xml
 
 # List all feeds
-bundle exec fmog feed list
+fmog feed list
 
 # Fetch all feeds
-bundle exec fmog feed fetch
+fmog feed fetch
 
 # Fetch a specific feed
-bundle exec fmog feed fetch 1
+fmog feed fetch 1
 
 # Remove a feed
-bundle exec fmog feed remove 1
+fmog feed remove 1
 ```
 
 ### Item (Article) Management
 
 ```bash
 # List items
-bundle exec fmog item list
+fmog item list
 
 # Show only unread items
-bundle exec fmog item list --unread
+fmog item list --unread
 
 # Filter items by feed
-bundle exec fmog item list --feed 1
+fmog item list --feed 1
 
 # Limit the number of items
-bundle exec fmog item list --limit 10
+fmog item list --limit 10
 
 # Show item details
-bundle exec fmog item show 1
+fmog item show 1
 
 # Mark as read
-bundle exec fmog item read 1
+fmog item read 1
 
 # Mark as unread
-bundle exec fmog item unread 1
+fmog item unread 1
 ```
 
 ## Output Format
@@ -61,7 +61,7 @@ bundle exec fmog item unread 1
 
 ```bash
 # Pipe JSON Lines to other commands
-bundle exec fmog item list --unread | jq '.title'
+fmog item list --unread | jq '.title'
 ```
 
 ## Data Storage
