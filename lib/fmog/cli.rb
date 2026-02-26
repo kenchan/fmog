@@ -41,7 +41,7 @@ module Fmog
           puts "No feeds."
           return
         end
-        table = Terminal::Table.new(
+        table = ::Terminal::Table.new(
           headings: ["ID", "Title", "URL", "Last Fetched"],
           rows: feeds.map { |f| [f["id"], f["title"] || "-", f["url"], f["last_fetched_at"] || "-"] }
         )
@@ -96,7 +96,7 @@ module Fmog
           puts "No items."
           return
         end
-        table = Terminal::Table.new(
+        table = ::Terminal::Table.new(
           headings: ["ID", "Feed", "Title", "Published", "Read"],
           rows: items.map { |i|
             read_mark = i["read_at"] ? "Y" : ""
