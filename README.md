@@ -5,7 +5,13 @@ A CLI feed aggregator written in Ruby. Subscribe to and read RSS/Atom feeds from
 ## Installation
 
 ```bash
-bundle install
+gem install fmog
+```
+
+Or try it without installing (like npx):
+
+```bash
+gem exec fmog feed list
 ```
 
 ## Usage
