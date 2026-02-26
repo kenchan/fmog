@@ -16,6 +16,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "sqlite3", "~> 2.0"
   spec.add_dependency "thor", "~> 1.3"
   spec.add_dependency "terminal-table", "~> 3.0"
+  spec.add_dependency "xdg", "~> 10.0"
 
   spec.add_development_dependency "minitest", "~> 5.0"
   spec.add_development_dependency "rake", "~> 13.0"

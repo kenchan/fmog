@@ -2,10 +2,11 @@
 
 require "sqlite3"
 require "fileutils"
+require "xdg"
 
 module Fmog
   module DB
-    DB_DIR = File.join(Dir.home, ".local", "share", "fmog")
+    DB_DIR = XDG.new.data_home.join("fmog").to_s
     DB_PATH = File.join(DB_DIR, "fmog.db")
 
     def self.connection
