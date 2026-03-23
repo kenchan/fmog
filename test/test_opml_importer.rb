@@ -30,7 +30,7 @@ class TestOpmlImporter < FmogTestCase
 
   def test_imports_all_urls
     f = write_opml(SAMPLE_OPML)
-    result = Fmog::OpmlImporter.import(f.path)
+    result = Fmog::Opml::Importer.import(f.path)
     assert_equal 3, result.added
     assert_equal 0, result.skipped
     assert_empty result.errors
@@ -42,7 +42,7 @@ class TestOpmlImporter < FmogTestCase
   def test_skips_duplicates
     Fmog::Feed.add("https://example.com/ruby.xml")
     f = write_opml(SAMPLE_OPML)
-    result = Fmog::OpmlImporter.import(f.path)
+    result = Fmog::Opml::Importer.import(f.path)
     assert_equal 2, result.added
     assert_equal 1, result.skipped
     assert_empty result.errors
@@ -64,19 +64,19 @@ class TestOpmlImporter < FmogTestCase
       </opml>
     XML
     f = write_opml(opml)
-    result = Fmog::OpmlImporter.import(f.path)
+    result = Fmog::Opml::Importer.import(f.path)
     assert_equal 1, result.added
   ensure
     f&.close!
   end
 
   def test_raises_on_missing_file
-    assert_raises(RuntimeError) { Fmog::OpmlImporter.import("/nonexistent/file.opml") }
+    assert_raises(RuntimeError) { Fmog::Opml::Importer.import("/nonexistent/file.opml") }
   end
 
   def test_raises_on_invalid_xml
     f = write_opml("<not valid xml<<<")
-    assert_raises(RuntimeError) { Fmog::OpmlImporter.import(f.path) }
+    assert_raises(RuntimeError) { Fmog::Opml::Importer.import(f.path) }
   ensure
     f&.close!
   end
@@ -92,7 +92,7 @@ class TestOpmlImporter < FmogTestCase
       </opml>
     XML
     f = write_opml(opml)
-    result = Fmog::OpmlImporter.import(f.path)
+    result = Fmog::Opml::Importer.import(f.path)
     assert_equal 1, result.added
   ensure
     f&.close!

@@ -1,0 +1,22 @@
+module Fmog
+  module Opml
+    class Importer
+      class Result
+        attr_reader added: Integer
+        attr_reader skipped: Integer
+        attr_reader errors: Array[{ url: String, message: String }]
+
+        def initialize: (added: Integer, skipped: Integer, errors: Array[{ url: String, message: String }]) -> void
+      end
+
+      def self.import: (String path) -> Result
+
+      def initialize: (String path) -> void
+      def import: () -> Result
+
+      private
+
+      def collect_urls: (REXML::Element?) -> Array[String]
+    end
+  end
+end

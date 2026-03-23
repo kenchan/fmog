@@ -53,7 +53,7 @@ module Fmog
 
     desc "import FILE", "Import feeds from an OPML file"
     def import(file)
-      result = OpmlImporter.import(file)
+      result = Opml::Importer.import(file)
       summary = "#{result.added} added, #{result.skipped} skipped (duplicate), #{result.errors.length} error#{"s" if result.errors.length != 1}"
       if tty?
         puts summary
