@@ -51,6 +51,22 @@ module Fmog
       end
     end
 
+    desc "import FILE", "Import feeds from an OPML file"
+    def import(file)
+      result = OpmlImporter.import(file)
+      summary = "#{result.added} added, #{result.skipped} skipped (duplicate), #{result.errors.length} error#{"s" if result.errors.length != 1}"
+      if tty?
+        puts summary
+        result.errors.each { |e| $stderr.puts "  - #{e[:url]}: #{e[:message]}" }
+      else
+        puts JSON.generate({ added: result.added, skipped: result.skipped, errors: result.errors })
+      end
+      exit 1 if result.errors.any?
+    rescue => e
+      $stderr.puts "Error: #{e.message}"
+      exit 1
+    end
+
     desc "remove ID", "Remove a feed"
     def remove(id)
       count = Feed.remove(id.to_i)
