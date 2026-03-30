@@ -1,0 +1,18 @@
+module REXML
+  class Document
+    def initialize: (String xml) -> void
+    def root: () -> Element?
+  end
+
+  class Element
+    def attributes: () -> Attributes
+    def each_element: (String xpath) { (Element) -> void } -> void
+  end
+
+  class Attributes
+    def []: (String name) -> String?
+  end
+
+  class ParseException < StandardError
+  end
+end
