@@ -1,5 +1,7 @@
 module Fmog
   module Opml
+    def self.import: (String path) -> Importer::Result
+
     class Importer
       class Result
         attr_reader added: Integer
@@ -9,10 +11,8 @@ module Fmog
         def initialize: (added: Integer, skipped: Integer, errors: Array[{ url: String, message: String }]) -> void
       end
 
-      def self.import: (String path) -> Result
-
       def initialize: (String path) -> void
-      def import: () -> Result
+      def call: () -> Result
 
       private
 

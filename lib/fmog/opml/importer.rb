@@ -4,18 +4,18 @@ require "rexml/document"
 
 module Fmog
   module Opml
+    def self.import(path)
+      Importer.new(path).call
+    end
+
     class Importer
       Result = Struct.new(:added, :skipped, :errors, keyword_init: true)
-
-      def self.import(path)
-        new(path).import
-      end
 
       def initialize(path)
         @path = path
       end
 
-      def import
+      def call
         xml = File.read(@path)
         doc = REXML::Document.new(xml)
 
